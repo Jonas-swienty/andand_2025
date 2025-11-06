@@ -191,7 +191,7 @@ body {
 @media (max-width: 768px) {
   .logo {
     /* bigger, but capped to avoid overflow */
-    font-size: clamp(72px, 36vw, 42vh);
+    font-size: clamp(90px, 44vw, 48vh);
     /* keep it truly centered */
     top: 50%;
     left: 50%;
