@@ -1,0 +1,10 @@
+# robots.txt for andand.space
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://andand.space/sitemap.xml
+
+# Disallow analytics and tracking scripts
+Disallow: /_vercel/
