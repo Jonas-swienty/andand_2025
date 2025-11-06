@@ -14,6 +14,9 @@ $(document).ready(function() {
         paused: true
     });
 
+    // Variable to store the interval ID
+    var autoAdvanceInterval;
+
     // Function to randomly advance either left or right side
     function randomAdvance() {
         // Randomly choose left (0) or right (1)
@@ -21,16 +24,28 @@ $(document).ready(function() {
         $(side).cycle('next');
     }
 
-    // Start random advancing every 10 seconds
-    setInterval(randomAdvance, 10000);
+    // Function to start/restart the auto-advance timer
+    function startAutoAdvance() {
+        // Clear existing interval if any
+        if (autoAdvanceInterval) {
+            clearInterval(autoAdvanceInterval);
+        }
+        // Start new interval
+        autoAdvanceInterval = setInterval(randomAdvance, 10000);
+    }
 
-    // Click handlers to advance to next image
+    // Start random advancing every 10 seconds
+    startAutoAdvance();
+
+    // Click handlers to advance to next image and reset timer
     $('#leftSide').on('click', function() {
         $(this).cycle('next');
+        startAutoAdvance(); // Reset the timer
     });
 
     $('#rightSide').on('click', function() {
         $(this).cycle('next');
+        startAutoAdvance(); // Reset the timer
     });
 
     // About overlay handlers
