@@ -200,9 +200,3 @@ body {
     z-index: 30;           /* above imagery, below the overlay */
   }
 }
-
-@supports (height: 100dvh) {
-  @media (max-width: 768px) {
-    .logo { top: 50dvh; }
-  }
-}
