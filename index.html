@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&&</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TYFLNVGF2R"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-TYFLNVGF2R');
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://malsup.github.io/jquery.cycle.all.js"></script>
+</head>
+<body>
+    <div class="split-screen">
+        <div class="left-side" id="leftSide">
+            <img src="images/left-1.jpg" alt="Left image 1">
+            <img src="images/left-2.jpg" alt="Left image 2">
+            <img src="images/left-3.jpg" alt="Left image 3">
+        </div>
+        <div class="right-side" id="rightSide">
+            <img src="images/right-1.jpg" alt="Right image 1">
+            <img src="images/right-2.jpg" alt="Right image 2">
+            <img src="images/right-3.jpg" alt="Right image 3">
+        </div>
+
+        <div class="nav-text about-text" id="aboutBtn">about</div>
+        <div class="nav-text contact-text">
+            <a href="mailto:office@andand.space" class="contact-link">contact</a>
+        </div>
+
+        <div class="logo">&&</div>
+    </div>
+
+    <div class="overlay" id="aboutOverlay">
+        <div class="overlay-content">
+            <div class="column-container">
+                <div class="column office-column">
+                    Office<br><br>
+                    &&<br>
+                    sundholmsvej 46<br>
+                    2300 Copenhagen S<br>
+                    Denmark<br><br>
+                    email: office@andand.space<br>
+                    phone: +45 20640262
+                </div>
+                <div class="column about-column">
+                    About<br><br>
+                    <span class="caption">&& is an experience-based spatial design practice working between Copenhagen and New York. We operate across architecture, interiors, installations, and curation. The studio is founded on creating memorable, context-led experiences. We translate identity into spatial strategy, material systems, and clear user journeys, working closely with clients to turn complex ideas into buildable environments. From early concept through documentation and delivery, we protect the core concept while aligning performance, budget, and identity. With an exploratory approach, we shape spaces that resonate and endure.</span>
+                </div>
+                <div class="column close-column">
+                    <a href="#" class="close-link" id="closeBtn">(close)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
