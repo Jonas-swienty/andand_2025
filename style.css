@@ -13,11 +13,20 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
 body {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     font-family: 'AkkuratPro', Arial, sans-serif;
+    position: fixed;
+    -webkit-overflow-scrolling: touch;
 }
 
 .split-screen {
@@ -65,6 +74,10 @@ body {
     z-index: 10;
     user-select: none;
     pointer-events: none;
+    white-space: nowrap;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-text {
@@ -190,13 +203,12 @@ body {
 
 @media (max-width: 768px) {
   .logo {
-    /* bigger, but capped to avoid overflow */
     font-size: clamp(90px, 44vw, 48vh);
-    /* keep it truly centered */
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;   /* prevent wrapping on small screens */
-    z-index: 30;           /* above imagery, below the overlay */
+    transform: translate3d(-50%, -50%, 0);
+    white-space: nowrap;
+    z-index: 30;
+    -webkit-transform: translate3d(-50%, -50%, 0);
   }
 }

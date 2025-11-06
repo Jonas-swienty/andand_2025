@@ -2,14 +2,14 @@ $(document).ready(function() {
     // Initialize Cycle plugin for both sides with fade effect, but paused
     $('#leftSide').cycle({
         fx: 'fade',
-        speed: 800,
+        speed: 500,
         timeout: 0,
         paused: true
     });
 
     $('#rightSide').cycle({
         fx: 'fade',
-        speed: 800,
+        speed: 500,
         timeout: 0,
         paused: true
     });
