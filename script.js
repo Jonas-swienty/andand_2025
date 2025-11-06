@@ -1,18 +1,28 @@
 $(document).ready(function() {
-    // Initialize Cycle plugin for both sides with fade effect
+    // Initialize Cycle plugin for both sides with fade effect, but paused
     $('#leftSide').cycle({
         fx: 'fade',
         speed: 800,
-        timeout: 0, // No auto-advance
+        timeout: 0,
         paused: true
     });
 
     $('#rightSide').cycle({
         fx: 'fade',
         speed: 800,
-        timeout: 0, // No auto-advance
+        timeout: 0,
         paused: true
     });
+
+    // Function to randomly advance either left or right side
+    function randomAdvance() {
+        // Randomly choose left (0) or right (1)
+        var side = Math.random() < 0.5 ? '#leftSide' : '#rightSide';
+        $(side).cycle('next');
+    }
+
+    // Start random advancing every 10 seconds
+    setInterval(randomAdvance, 10000);
 
     // Click handlers to advance to next image
     $('#leftSide').on('click', function() {
