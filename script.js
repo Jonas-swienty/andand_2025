@@ -62,10 +62,10 @@ $(document).ready(function() {
             clearInterval(autoAdvanceInterval);
         }
         // Start new interval
-        autoAdvanceInterval = setInterval(randomAdvance, 10000);
+        autoAdvanceInterval = setInterval(randomAdvance, 3000);
     }
 
-    // Start random advancing every 10 seconds
+    // Start random advancing every 3 seconds
     startAutoAdvance();
 
     // Click handlers to advance to next image and reset timer
