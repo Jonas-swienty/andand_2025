@@ -1,6 +1,9 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "analytics": {
+    "consentPolicy": "disable"
+  },
   "headers": [
     {
       "source": "/(.*)",
