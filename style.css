@@ -201,16 +201,30 @@ body {
         height: 50%;
     }
 
+    .overlay-content {
+        display: block !important;
+        padding: 1rem;
+    }
+
+    .content-wrapper {
+        width: 100%;
+    }
+
     .mobile-header {
-        display: flex;
+        display: flex !important;
         justify-content: space-between;
         align-items: flex-start;
         margin-bottom: 2rem;
         line-height: 1;
+    }
+
+    .mobile-office-title,
+    .mobile-close {
         color: white;
         font-family: 'AkkuratPro', Arial, sans-serif;
         font-weight: bold;
         font-size: 1.5rem;
+        line-height: 1;
     }
 
     .column-container {
@@ -218,11 +232,11 @@ body {
     }
 
     .close-column-desktop {
-        display: none;
+        display: none !important;
     }
 
     .desktop-title {
-        display: none;
+        display: none !important;
     }
 
     .office-column {
