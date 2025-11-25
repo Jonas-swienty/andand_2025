@@ -149,6 +149,10 @@ body {
     gap: 2rem;
 }
 
+.column-header {
+    display: none;
+}
+
 .column {
     line-height: 1;
     color: white;
@@ -166,8 +170,16 @@ body {
     line-height: 1;
 }
 
-.close-column {
+.close-column-desktop {
     text-align: right;
+}
+
+.close-column-mobile {
+    display: none;
+}
+
+.office-title {
+    font-size: 1.5rem;
 }
 
 .close-link {
@@ -197,8 +209,27 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .close-column {
-        text-align: left;
+    .column-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 2rem;
+        line-height: 1;
+        color: white;
+        font-family: 'AkkuratPro', Arial, sans-serif;
+        font-weight: bold;
+    }
+
+    .close-column-desktop {
+        display: none;
+    }
+
+    .close-column-mobile {
+        display: block;
+    }
+
+    .office-column {
+        margin-bottom: 2rem;
     }
 }
 
