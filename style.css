@@ -143,14 +143,14 @@ body {
     min-height: 100vh;
 }
 
+.mobile-header {
+    display: none;
+}
+
 .column-container {
     display: grid;
     grid-template-columns: 5fr 5fr 2fr;
     gap: 2rem;
-}
-
-.column-header {
-    display: none;
 }
 
 .column {
@@ -174,12 +174,8 @@ body {
     text-align: right;
 }
 
-.close-column-mobile {
-    display: none;
-}
-
-.office-title {
-    font-size: 1.5rem;
+.desktop-title {
+    display: inline;
 }
 
 .close-link {
@@ -205,11 +201,7 @@ body {
         height: 50%;
     }
 
-    .column-container {
-        grid-template-columns: 1fr;
-    }
-
-    .column-header {
+    .mobile-header {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
@@ -218,14 +210,19 @@ body {
         color: white;
         font-family: 'AkkuratPro', Arial, sans-serif;
         font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .column-container {
+        grid-template-columns: 1fr;
     }
 
     .close-column-desktop {
         display: none;
     }
 
-    .close-column-mobile {
-        display: block;
+    .desktop-title {
+        display: none;
     }
 
     .office-column {

@@ -93,7 +93,7 @@ $(document).ready(function() {
         $('#aboutOverlay').addClass('active');
     });
 
-    $('#closeBtn, #closeBtnDesktop').on('click', function(e) {
+    $('#closeBtnMobile, #closeBtnDesktop').on('click', function(e) {
         e.preventDefault();
         $('#aboutOverlay').removeClass('active');
     });
