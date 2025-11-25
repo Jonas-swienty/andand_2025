@@ -93,7 +93,7 @@ $(document).ready(function() {
         $('#aboutOverlay').addClass('active');
     });
 
-    $('#closeBtnMobile, #closeBtnDesktop').on('click', function(e) {
+    $('#closeBtn').on('click', function(e) {
         e.preventDefault();
         $('#aboutOverlay').removeClass('active');
     });
@@ -105,8 +105,8 @@ $(document).ready(function() {
         }
     });
 
-    // Prevent clicks inside the content wrapper from closing the overlay
-    $('.content-wrapper').on('click', function(e) {
+    // Prevent clicks inside the column container from closing the overlay
+    $('.column-container').on('click', function(e) {
         e.stopPropagation();
     });
 

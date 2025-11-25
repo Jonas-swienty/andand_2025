@@ -144,10 +144,6 @@ body {
     min-height: 100vh;
 }
 
-.mobile-header {
-    display: none;
-}
-
 .column-container {
     display: grid;
     grid-template-columns: 5fr 5fr 2fr;
@@ -171,12 +167,8 @@ body {
     line-height: 1;
 }
 
-.close-column-desktop {
+.close-column {
     text-align: right;
-}
-
-.desktop-title {
-    display: inline;
 }
 
 .close-link {
@@ -202,45 +194,12 @@ body {
         height: 50%;
     }
 
-    .overlay-content {
-        padding: 1rem;
-    }
-
-    .content-wrapper {
-        width: 100%;
-    }
-
-    .mobile-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 2rem;
-        line-height: 1;
-    }
-
-    .mobile-office-title,
-    .mobile-close {
-        color: white;
-        font-family: 'AkkuratPro', Arial, sans-serif;
-        font-weight: bold;
-        font-size: 1.5rem;
-        line-height: 1;
-    }
-
     .column-container {
         grid-template-columns: 1fr;
     }
 
-    .close-column-desktop {
-        display: none;
-    }
-
-    .desktop-title {
-        display: none;
-    }
-
-    .office-column {
-        margin-bottom: 2rem;
+    .close-column {
+        text-align: left;
     }
 }
 
