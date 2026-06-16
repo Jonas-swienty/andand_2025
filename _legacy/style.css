@@ -235,3 +235,135 @@ body {
     -webkit-transform: translate3d(-50%, -50%, 0);
   }
 }
+
+/* Projects Text Positioning */
+.projects-text {
+    right: 9rem; /* Positioned to the left of 'about' */
+}
+
+@media (max-width: 768px) {
+    .projects-text {
+        right: auto;
+        left: 1rem; /* On mobile, move to the top left so it doesn't crowd */
+    }
+}
+
+/* Projects Overlay Specific Styles */
+.projects-overlay-content {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    color: white;
+    font-family: 'AkkuratPro', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+#closeProjectsBtnMobile {
+    display: none; /* Hidden on desktop, shown on mobile */
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    width: 100%;
+}
+
+.project-item {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    opacity: 0.9;
+}
+
+.project-image-container {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* Standardize image sizes */
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.project-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-item:hover .project-thumbnail {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.project-info {
+    color: white;
+    font-family: 'AkkuratPro', Arial, sans-serif;
+}
+
+.project-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.project-category {
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+.projects-close-desktop {
+    margin-top: 4rem;
+    text-align: right;
+    width: 100%;
+}
+
+/* Projects Mobile Adjustments */
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-overlay-content {
+        padding: 2rem 1rem;
+    }
+
+    .projects-header {
+        margin-bottom: 2rem;
+    }
+
+    #closeProjectsBtnMobile {
+        display: block; /* Show on mobile */
+    }
+
+    .projects-close-desktop {
+        display: none; /* Hide on mobile */
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .project-image-container {
+        aspect-ratio: 16 / 9; /* Wider images on mobile */
+    }
+}

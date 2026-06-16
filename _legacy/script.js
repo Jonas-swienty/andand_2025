@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // Function to initialize or reinitialize cycle
     function initCycle() {
         $('#leftSide').cycle({
@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     // Function to recenter all images
     function recenterImages() {
-        $('#leftSide img, #leftSide video, #rightSide img, #rightSide video').each(function() {
+        $('#leftSide img, #leftSide video, #rightSide img, #rightSide video').each(function () {
             var $elem = $(this);
             // Force complete recalculation of positioning
             $elem.css({
@@ -50,7 +50,7 @@ $(document).ready(function() {
         var side = Math.random() < 0.5 ? '#leftSide' : '#rightSide';
         $(side).cycle('next');
         // Delay recenter to let cycle plugin finish
-        setTimeout(function() {
+        setTimeout(function () {
             recenterImages();
         }, 50);
     }
@@ -69,44 +69,55 @@ $(document).ready(function() {
     startAutoAdvance();
 
     // Click handlers to advance to next image and reset timer
-    $('#leftSide').on('click', function() {
+    $('#leftSide').on('click', function () {
         $(this).cycle('next');
         // Delay recenter to let cycle plugin finish
-        setTimeout(function() {
+        setTimeout(function () {
             recenterImages();
         }, 50);
         startAutoAdvance(); // Reset the timer
     });
 
-    $('#rightSide').on('click', function() {
+    $('#rightSide').on('click', function () {
         $(this).cycle('next');
         // Delay recenter to let cycle plugin finish
-        setTimeout(function() {
+        setTimeout(function () {
             recenterImages();
         }, 50);
         startAutoAdvance(); // Reset the timer
     });
 
     // About overlay handlers
-    $('#aboutBtn').on('click', function(e) {
+    $('#aboutBtn').on('click', function (e) {
         e.preventDefault();
         $('#aboutOverlay').addClass('active');
     });
 
-    $('#closeBtn, #closeBtnMobile').on('click', function(e) {
+    $('#closeBtn, #closeBtnMobile').on('click', function (e) {
         e.preventDefault();
         $('#aboutOverlay').removeClass('active');
     });
 
-    // Close overlay when clicking outside the column container
-    $('.overlay-content').on('click', function(e) {
+    // Projects overlay handlers
+    $('#projectsBtn').on('click', function (e) {
+        e.preventDefault();
+        $('#projectsOverlay').addClass('active');
+    });
+
+    $('#closeProjectsBtn, #closeProjectsBtnMobile').on('click', function (e) {
+        e.preventDefault();
+        $('#projectsOverlay').removeClass('active');
+    });
+
+    // Close overlays when clicking outside the content container
+    $('.overlay-content').on('click', function (e) {
         if (e.target === this) {
-            $('#aboutOverlay').removeClass('active');
+            $(this).closest('.overlay').removeClass('active');
         }
     });
 
-    // Prevent clicks inside the column container from closing the overlay
-    $('.column-container').on('click', function(e) {
+    // Prevent clicks inside the content containers from closing the overlays
+    $('.column-container, .projects-grid, .projects-header, .projects-close-desktop').on('click', function (e) {
         e.stopPropagation();
     });
 
@@ -114,7 +125,7 @@ $(document).ready(function() {
     var resizeTimer;
     var lastWidth = $(window).width();
 
-    $(window).on('resize', function() {
+    $(window).on('resize', function () {
         var currentWidth = $(window).width();
 
         // Only act if width actually changed (not just height on mobile scroll)
@@ -122,15 +133,15 @@ $(document).ready(function() {
             lastWidth = currentWidth;
 
             clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function() {
+            resizeTimer = setTimeout(function () {
                 // Recenter all images on resize
                 recenterImages();
 
                 // Force reflow by temporarily changing opacity
-                $('#leftSide img, #leftSide video, #rightSide img, #rightSide video').each(function() {
+                $('#leftSide img, #leftSide video, #rightSide img, #rightSide video').each(function () {
                     var $elem = $(this);
                     $elem.css('opacity', 0.9999);
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $elem.css('opacity', '');
                     }, 10);
                 });
