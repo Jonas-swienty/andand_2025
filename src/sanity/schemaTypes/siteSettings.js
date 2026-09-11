@@ -44,6 +44,44 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: "leftMedia",
+      title: "Homepage — left column media",
+      description: "Images/videos cycled on the left half of the homepage split-screen.",
+      type: "array",
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [{ name: "alt", title: "Alt text", type: "string" }],
+        },
+        {
+          type: "file",
+          title: "Video",
+          options: { accept: "video/*" },
+          fields: [{ name: "alt", title: "Alt text", type: "string" }],
+        },
+      ],
+    }),
+    defineField({
+      name: "rightMedia",
+      title: "Homepage — right column media",
+      description: "Images/videos cycled on the right half of the homepage split-screen.",
+      type: "array",
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [{ name: "alt", title: "Alt text", type: "string" }],
+        },
+        {
+          type: "file",
+          title: "Video",
+          options: { accept: "video/*" },
+          fields: [{ name: "alt", title: "Alt text", type: "string" }],
+        },
+      ],
+    }),
   ],
   preview: {
     prepare() {

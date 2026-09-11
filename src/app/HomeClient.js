@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-const leftMedia = [
+const defaultLeftMedia = [
   { type: "image", src: "/images/left-1.jpg", alt: "&& spatial design project" },
   { type: "image", src: "/images/left-2.jpg", alt: "&& design studio portfolio" },
   { type: "video", src: "/images/left-3.mp4", alt: "&& design studio project video" },
@@ -12,7 +12,7 @@ const leftMedia = [
   { type: "image", src: "/images/Left-6.jpg", alt: "&& spatial design studio" },
 ];
 
-const rightMedia = [
+const defaultRightMedia = [
   { type: "image", src: "/images/right-1.jpg", alt: "&& interior design project" },
   { type: "image", src: "/images/right-2.jpg", alt: "&& design practice portfolio" },
   { type: "image", src: "/images/right-3.jpg", alt: "&& architecture and interiors" },
@@ -21,7 +21,26 @@ const rightMedia = [
   { type: "image", src: "/images/Right-6.png", alt: "&& interior design and curation" },
 ];
 
-export default function HomeClient({ officeLabel, email, phone, addresses, aboutText }) {
+function normalizeMedia(sanityMedia) {
+  if (!sanityMedia?.length) return null;
+  return sanityMedia.map((item) => ({
+    type: item._type === "file" ? "video" : "image",
+    src: item.url,
+    alt: item.alt || "&& spatial design",
+  }));
+}
+
+export default function HomeClient({
+  officeLabel,
+  email,
+  phone,
+  addresses,
+  aboutText,
+  leftMedia: leftMediaProp,
+  rightMedia: rightMediaProp,
+}) {
+  const leftMedia = normalizeMedia(leftMediaProp) || defaultLeftMedia;
+  const rightMedia = normalizeMedia(rightMediaProp) || defaultRightMedia;
   const [leftIndex, setLeftIndex] = useState(0);
   const [rightIndex, setRightIndex] = useState(0);
   const [isAboutOpen, setIsAboutOpen] = useState(false);

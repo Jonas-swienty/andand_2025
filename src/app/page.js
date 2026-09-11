@@ -8,7 +8,9 @@ const SITE_SETTINGS_QUERY = `*[_type == "siteSettings"][0]{
   officeLabel,
   email,
   phone,
-  addresses
+  addresses,
+  leftMedia[]{ _type, alt, "url": asset->url },
+  rightMedia[]{ _type, alt, "url": asset->url }
 }`;
 
 const defaultSettings = {
@@ -18,6 +20,8 @@ const defaultSettings = {
   addresses: [],
   aboutText:
     "&& is an interior design firm and spatial design practice based in Copenhagen and New York. We operate across commercial interior design, architecture, and installations, specializing in creating transformative office interiors, retail spaces, restaurants, and hospitality environments. We create meaningful spatial experiences that translate a brand's identity and seasonal narratives into immersive environments. At our core we create meaningful connections between people and brands. From early concept through delivery, we protect this core purpose, turning complex briefs into enduring, context-led spaces.",
+  leftMedia: null,
+  rightMedia: null,
 };
 
 async function getSiteSettings() {
