@@ -151,7 +151,7 @@ export default function HomeClient({
 
       {/* About Overlay */}
       <div
-        className={`overlay ${isAboutOpen ? "active" : ""}`}
+        className={`overlay backdrop-blur-[10px] ${isAboutOpen ? "active" : ""}`}
         onClick={(e) => {
           if (e.target.classList.contains("overlay") || e.target.classList.contains("overlay-content")) {
             setIsAboutOpen(false);
