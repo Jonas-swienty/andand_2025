@@ -15,30 +15,22 @@ const jsonLd = {
     "Interior design firm and spatial design practice based in Copenhagen and New York. We specialize in commercial interior design, architecture, and brand environments for offices, retail, restaurants, and hospitality spaces.",
   email: "office@andand.space",
   telephone: "+4520640262",
-  priceRange: "$$$$",
   address: [
     {
       "@type": "PostalAddress",
-      streetAddress: "Copenhagen Office",
       addressLocality: "Copenhagen",
-      postalCode: "2300",
       addressCountry: "DK",
     },
     {
       "@type": "PostalAddress",
-      streetAddress: "New York Office",
       addressLocality: "New York",
-      postalCode: "10001",
       addressCountry: "US",
     },
   ],
   areaServed: [
     { "@type": "City", name: "Copenhagen", containedIn: { "@type": "Country", name: "Denmark" } },
     { "@type": "City", name: "New York", containedIn: { "@type": "Country", name: "United States" } },
-    { "@type": "City", name: "Tokyo", containedIn: { "@type": "Country", name: "Japan" } },
-    { "@type": "City", name: "Seoul", containedIn: { "@type": "Country", name: "South Korea" } },
   ],
-  sameAs: [],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Interior Design Services",
@@ -67,7 +59,6 @@ const jsonLd = {
 export const metadata = {
   title: "&& - Copenhagen & New York Architecture Studio",
   description: "Interior design firm based in Copenhagen and New York. && creates transformative commercial interiors, offices, retail spaces, restaurants, and hospitality environments.",
-  keywords: "interior design firm, copenhagen interior firm, new york interior firm, tokyo interior design, seoul interior design, commercial interior design, architecture firm, brand environments",
   metadataBase: new URL("https://andand.space"),
   alternates: {
     canonical: "/",

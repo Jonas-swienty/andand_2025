@@ -9,7 +9,7 @@ const defaultLeftMedia = [
   { type: "video", src: "/images/left-3.mp4", alt: "&& design studio project video" },
   { type: "image", src: "/images/left-4.jpg", alt: "&& architecture practice" },
   { type: "image", src: "/images/left-5.jpg", alt: "&& spatial design" },
-  { type: "image", src: "/images/Left-6.jpg", alt: "&& spatial design studio" },
+  { type: "image", src: "/images/left-6.jpg", alt: "&& spatial design studio" },
 ];
 
 const defaultRightMedia = [
@@ -18,7 +18,7 @@ const defaultRightMedia = [
   { type: "image", src: "/images/right-3.jpg", alt: "&& architecture and interiors" },
   { type: "video", src: "/images/right-4.mp4", alt: "&& spatial design video" },
   { type: "image", src: "/images/right-5.jpg", alt: "&& design studio work" },
-  { type: "image", src: "/images/Right-6.png", alt: "&& interior design and curation" },
+  { type: "image", src: "/images/right-6.png", alt: "&& interior design and curation" },
 ];
 
 function normalizeMedia(sanityMedia) {
@@ -82,7 +82,7 @@ export default function HomeClient({
                   src={leftMedia[leftIndex].src}
                   alt={leftMedia[leftIndex].alt}
                   style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }}
-                  priority={leftIndex === 0 ? "true" : undefined}
+                  fetchPriority={leftIndex === 0 ? "high" : undefined}
                 />
               ) : (
                 <video
@@ -91,6 +91,7 @@ export default function HomeClient({
                   loop
                   muted
                   playsInline
+                  preload="metadata"
                   style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }}
                 />
               )}
@@ -114,7 +115,7 @@ export default function HomeClient({
                   src={rightMedia[rightIndex].src}
                   alt={rightMedia[rightIndex].alt}
                   style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }}
-                  priority={rightIndex === 0 ? "true" : undefined}
+                  fetchPriority={rightIndex === 0 ? "high" : undefined}
                 />
               ) : (
                 <video
@@ -123,6 +124,7 @@ export default function HomeClient({
                   loop
                   muted
                   playsInline
+                  preload="metadata"
                   style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }}
                 />
               )}
