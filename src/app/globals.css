@@ -20,7 +20,7 @@ body {
     font-family: 'AkkuratPro', Arial, sans-serif;
     position: fixed;
     -webkit-overflow-scrolling: touch;
-    background-color: transparent;
+    background-color: #111;
 }
 
 .split-screen {
@@ -57,6 +57,12 @@ body {
 .left-side,
 .right-side {
     position: relative;
+    background-color: #111;
+}
+
+.media-layer {
+    position: absolute;
+    inset: 0;
 }
 
 .logo {

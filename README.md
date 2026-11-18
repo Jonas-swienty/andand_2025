@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# && — andand.space
 
-## Getting Started
+One-page Next.js site, deployed on Vercel. Every push to `main` redeploys.
 
-First, run the development server:
+## Changing pictures and videos
+
+The homepage halves cycle through the files in:
+
+- `public/media/left/`
+- `public/media/right/`
+
+On github.com, open the folder → **Add file → Upload files** to add, or open a file → **⋯ → Delete file** to remove. Commit, and the site updates in about a minute.
+
+- Files show in filename order, so start names with a number: `01-…`, `02-…`.
+- The rest of the name becomes the alt text (used by Google and screen readers; capitals are kept): `03-exhibition-design-for-Lise-Vester.jpg` → "Exhibition design for Lise Vester". `andand` turns into `&&`.
+- Images: `.jpg .jpeg .png .webp .avif .gif`. Videos: `.mp4 .webm .mov`.
+- Photos: upload them as they are (up to ~3000px wide is plenty). The site resizes them for each screen and serves them as AVIF/WebP automatically.
+- Videos are sent as-is, so compress them before uploading: about 1080px wide, no sound, ideally under 3 MB. GitHub's web upload limit is 25 MB per file. With ffmpeg:
+  `ffmpeg -i in.mp4 -an -c:v libx264 -preset slow -crf 26 -pix_fmt yuv420p -movflags +faststart -vf "scale='min(1080,iw)':-2" 03-name.mp4`
+- Give each video a still frame with the same name plus `.poster.jpg` (`03-name.mp4` → `03-name.poster.jpg`). It shows while the video loads. Make one with:
+  `ffmpeg -i 03-name.mp4 -frames:v 1 -q:v 3 03-name.poster.jpg`
+- The site only switches to a photo or video once it has fully loaded, so a slow file delays its turn instead of showing a blank frame.
+
+## Changing text
+
+Edit `src/content/site.json` on github.com (pencil icon): About text, email, phone and addresses. Use `\n` for a line break inside the About text.
+
+## Running locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`_legacy/` holds the old static site and a backup of the former Sanity content (`_legacy/sanity-backup/`).
