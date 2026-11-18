@@ -134,61 +134,80 @@ body {
     visibility: visible;
 }
 
-.overlay-content {
-    padding: 1rem 1rem;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-}
-
-.column-container {
+/* About: two halves lined up with the photo split, same text size as the navigation. */
+.about-grid {
     display: grid;
-    grid-template-columns: 5fr 5fr 2fr;
-    gap: 2rem;
-}
-
-.column {
-    line-height: 1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
+    min-height: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
     color: white;
     font-family: 'AkkuratPro', Arial, sans-serif;
+    font-size: 1rem;
     font-weight: bold;
+    line-height: 1.05;
 }
 
-.office-column,
-.about-column {
-    font-size: 1.5rem;
+.about-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
-.caption {
-    font-size: 1.5rem;
-    line-height: 1;
-    white-space: pre-line;
+.about-office {
+    justify-content: space-between;
+    gap: 3rem;
 }
 
-.close-column {
-    text-align: right;
+/* Room for "(close)" in the top-right corner. */
+.about-people {
+    padding-right: 4.5rem;
 }
 
-.close-link {
+.about-grid p,
+.about-label,
+.person-name {
+    margin: 0;
+    font: inherit;
+}
+
+.person {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35em;
+}
+
+.person-name {
+    text-transform: uppercase;
+}
+
+.about-contact {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-contact a {
     color: white;
     text-decoration: none;
-    cursor: pointer;
-    font-family: 'AkkuratPro', Arial, sans-serif;
-    font-weight: bold;
 }
 
-.close-link:hover {
+.about-contact a:hover,
+.about-close:hover {
     opacity: 0.7;
 }
 
-.mobile-header-row {
-    display: none;
-}
-
-.desktop-office-title {
-    display: inline;
+/* Sits exactly where "contact" is on the homepage. */
+.about-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: white;
+    font: inherit;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -202,32 +221,14 @@ body {
         height: 50%;
     }
 
-    .mobile-header-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 2rem;
-        font-size: 1.5rem;
-    }
-
-    .mobile-office-title,
-    .mobile-close-button {
-        color: white;
-        font-family: 'AkkuratPro', Arial, sans-serif;
-        font-weight: bold;
-        line-height: 1;
-    }
-
-    .desktop-office-title {
-        display: none;
-    }
-
-    .column-container {
+    .about-grid {
         grid-template-columns: 1fr;
+        row-gap: 3rem;
+        align-content: start;
     }
 
-    .close-column {
-        display: none;
+    .about-people {
+        padding-right: 0;
     }
 }
 

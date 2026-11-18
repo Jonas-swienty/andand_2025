@@ -17,6 +17,8 @@ const jsonLd = {
   address: [
     {
       "@type": "PostalAddress",
+      streetAddress: "Thoravej 24",
+      postalCode: "2400",
       addressLocality: "Copenhagen",
       addressCountry: "DK",
     },

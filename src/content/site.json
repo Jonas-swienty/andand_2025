@@ -1,7 +1,20 @@
 {
-  "officeLabel": "&&",
   "email": "office@andand.space",
   "phone": "+45 20640262",
-  "addresses": [],
-  "aboutText": "We specialize in creating spatial frameworks that translate complex ideas and narratives into immersive environments. At our core, we design spaces that foster meaningful dialogues between objects, spaces, and body. \n\n&& is a spatial design practice working with exhibition design, installations, and architecture.\n \nWe build spatial frameworks that invite gradual discovery, translating abstract curatorial concepts into precise scenography and guided spatial sequences. We collaborate intimately with the stakeholders to develop environments that unfold as a deliberate dialogue between the viewer, objects and space. From initial research to built delivery, we act as the bridge between conceptual ambition and technical execution, protecting the integrity of the idea at every stage."
+  "address": "Thoravej 24, 2400 Copenhagen",
+  "office": [
+    "&& is a spatial design practice working with exhibition design, installations and architecture.",
+    "We design spaces that foster meaningful dialogues between objects, space and body, translating complex ideas and curatorial concepts into precise scenography and guided spatial sequences that invite gradual discovery.",
+    "Working closely with artists, curators and clients, we carry each project from initial research to built delivery, protecting the integrity of the idea at every stage."
+  ],
+  "people": [
+    {
+      "name": "Andre Bahremand",
+      "bio": "Andre Bahremand is an architect and exhibition designer working between architecture, spatial curation and cultural production. Educated in Australia, he worked with OMA in New York under Rem Koolhaas and Shohei Shigematsu, and with MVRDV in Rotterdam. He has designed exhibitions in New York, for 3daysofdesign in Copenhagen and for Milan Design Week."
+    },
+    {
+      "name": "Jonas Swienty Andresen",
+      "bio": "Jonas Swienty Andresen is an architect and educator whose research-driven work moves between architecture, technology and storytelling, blending traditional craft and new technologies into immersive spaces rich in narrative. He teaches in the Master's programme in Spatial Design at the Royal Danish Academy in Copenhagen, approaching space as an interdisciplinary practice between the human and the architectural scale."
+    }
+  ]
 }

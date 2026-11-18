@@ -24,7 +24,13 @@ On github.com, open the folder → **Add file → Upload files** to add, or open
 
 ## Changing text
 
-Edit `src/content/site.json` on github.com (pencil icon): About text, email, phone and addresses. Use `\n` for a line break inside the About text.
+Edit `src/content/site.json` on github.com (pencil icon). It holds everything on the About page:
+
+- `email`, `phone`, `address`: the contact lines at the bottom of the Office half.
+- `office`: the Office text, one entry per paragraph.
+- `people`: one entry per person, each with a `name` (shown in capitals) and a `bio`. Add, remove or reorder people by editing this list.
+
+Keep the quotes and commas as they are; GitHub highlights a mistake before you commit.
 
 ## Running locally
 

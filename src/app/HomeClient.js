@@ -148,10 +148,18 @@ const Side = forwardRef(function Side({ items, className }, ref) {
   );
 });
 
-export default function HomeClient({ officeLabel, email, phone, addresses, aboutText, leftMedia, rightMedia }) {
+export default function HomeClient({ email, phone, address, office = [], people = [], leftMedia, rightMedia }) {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const leftRef = useRef(null);
   const rightRef = useRef(null);
+
+  // Escape closes the About page.
+  useEffect(() => {
+    if (!isAboutOpen) return;
+    const onKey = (e) => e.key === "Escape" && setIsAboutOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isAboutOpen]);
 
   // Every few seconds one random side moves on. If that side's next item is still
   // loading, the other side goes instead; if neither is ready, nothing changes.
@@ -183,55 +191,43 @@ export default function HomeClient({ officeLabel, email, phone, addresses, about
         <div className="logo">&amp;&amp;</div>
       </div>
 
-      {/* About Overlay */}
+      {/* About: two halves over the blurred photos — the office on the left, the people on the right. */}
       <div
         className={`overlay backdrop-blur-[10px] ${isAboutOpen ? "active" : ""}`}
+        aria-hidden={!isAboutOpen}
         onClick={(e) => {
-          if (e.target.classList.contains("overlay") || e.target.classList.contains("overlay-content")) {
+          // A click on empty space (not on the text) closes it.
+          if (e.target.classList.contains("overlay") || e.target.classList.contains("about-grid")) {
             setIsAboutOpen(false);
           }
         }}
       >
-        <div className="overlay-content">
-          <div className="column-container" onClick={(e) => e.stopPropagation()}>
-            <div className="mobile-header-row">
-              <div className="mobile-office-title">Office</div>
-              <div className="mobile-close-button">
-                <button className="close-link bg-transparent border-none p-0 cursor-pointer" onClick={() => setIsAboutOpen(false)}>
-                  (close)
-                </button>
-              </div>
-            </div>
-            <div className="column office-column">
-              <span className="desktop-office-title">
-                Office
-                <br />
-                <br />
-              </span>
-              {officeLabel}
-              <br />
-              {addresses?.map((address, idx) => (
-                <span key={idx}>
-                  {address.city}: {address.line}
-                  <br />
-                </span>
+        <div className="about-grid">
+          <section className="about-col about-office">
+            <div className="about-col">
+              <h2 className="about-label">Office</h2>
+              {office.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
               ))}
-              email: {email}
-              <br />
-              phone: {phone}
             </div>
-            <div className="column about-column">
-              About
-              <br />
-              <br />
-              <span className="caption">{aboutText}</span>
+            <div className="about-contact">
+              <a href={`mailto:${email}`}>email: {email}</a>
+              <a href={`tel:${phone.replace(/\s+/g, "")}`}>phone: {phone}</a>
+              {address && <span>address: {address}</span>}
             </div>
-            <div className="column close-column">
-              <button className="close-link bg-transparent border-none p-0 cursor-pointer" onClick={() => setIsAboutOpen(false)}>
-                (close)
-              </button>
-            </div>
-          </div>
+          </section>
+          <section className="about-col about-people">
+            <h2 className="about-label">People</h2>
+            {people.map((person) => (
+              <div key={person.name} className="person">
+                <h3 className="person-name">{person.name}</h3>
+                <p>{person.bio}</p>
+              </div>
+            ))}
+          </section>
+          <button className="about-close" onClick={() => setIsAboutOpen(false)}>
+            (close)
+          </button>
         </div>
       </div>
     </>
