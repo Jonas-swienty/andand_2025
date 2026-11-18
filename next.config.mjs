@@ -18,6 +18,8 @@ const nextConfig = {
   images: {
     // Photos are resized per screen and served as AVIF/WebP by Vercel.
     formats: ["image/avif", "image/webp"],
+    // Photo quality (Next.js's default is 75, a bit soft for photography). Must match QUALITY in HomeClient.js.
+    qualities: [85],
     minimumCacheTTL: 60 * 60 * 24 * 31,
     // Media URLs carry a ?v=<content hash> so long caching never serves an old photo.
     localPatterns: [{ pathname: "/media/**" }, { pathname: "/images/**" }],

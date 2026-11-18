@@ -5,7 +5,15 @@ import Image from "next/image";
 
 const FADE_MS = 800;
 const INTERVAL_MS = 3000;
-const SIZES = "(max-width: 768px) 100vw, 50vw";
+const QUALITY = 85;
+
+// How wide a photo is drawn, so the browser downloads a big enough version.
+// Each half is 50vw × 100vh (stacked on phones: 100vw × 50vh) and the photo covers it,
+// so a wide photo is drawn wider than the half: its height times its aspect ratio.
+function sizesFor(aspect = 1) {
+  const a = Math.round(aspect * 1000) / 1000;
+  return `(max-width: 768px) max(100vw, ${50 * a}vh), max(50vw, ${100 * a}vh)`;
+}
 
 // One photo or video, stacked absolutely inside its half of the screen.
 function MediaLayer({ item, active, eager, onReady, style }) {
@@ -31,7 +39,8 @@ function MediaLayer({ item, active, eager, onReady, style }) {
           src={item.src}
           alt={item.alt}
           fill
-          sizes={SIZES}
+          sizes={sizesFor(item.aspect)}
+          quality={QUALITY}
           preload={eager}
           placeholder={item.blur ? "blur" : "empty"}
           blurDataURL={item.blur}

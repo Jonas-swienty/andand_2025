@@ -23,14 +23,25 @@ function altFromFilename(name) {
   return text ? text.charAt(0).toUpperCase() + text.slice(1) : "&& spatial design";
 }
 
-// A tiny blurred version of the image, inlined in the HTML, shown until the real image arrives.
-async function blurPlaceholder(file) {
-  try {
-    const buf = await sharp(file).resize(16, 16, { fit: "inside" }).webp({ quality: 40 }).toBuffer();
-    return `data:image/webp;base64,${buf.toString("base64")}`;
-  } catch {
-    return undefined;
+// Smallest photo that still looks sharp: each half of a 1440×900 laptop screen is
+// 720×900 points, which a high-resolution (2×) display draws with 1440×1800 pixels.
+// A smaller photo stops the build with a clear message; Vercel then keeps the
+// current site online until the photo is replaced with a bigger one.
+const MIN_WIDTH = 1440;
+const MIN_HEIGHT = 1800;
+
+// Size, plus a tiny blurred version inlined in the HTML and shown until the real image arrives.
+async function inspectImage(file, side) {
+  const image = sharp(file);
+  const { width, height } = await image.metadata();
+  if (width < MIN_WIDTH || height < MIN_HEIGHT) {
+    throw new Error(
+      `public/media/${side}/${path.basename(file)} is ${width}×${height}px, which looks blurry on large screens. ` +
+        `Use a version at least ${MIN_WIDTH}px wide and ${MIN_HEIGHT}px tall.`
+    );
   }
+  const buf = await image.resize(16, 16, { fit: "inside" }).webp({ quality: 40 }).toBuffer();
+  return { aspect: width / height, blur: `data:image/webp;base64,${buf.toString("base64")}` };
 }
 
 async function loadMedia(side) {
@@ -54,7 +65,7 @@ async function loadMedia(side) {
       const ext = path.extname(file).toLowerCase();
       const alt = altFromFilename(file);
       if (IMAGE_EXT.includes(ext)) {
-        return { type: "image", src: url(file), alt, blur: await blurPlaceholder(path.join(dir, file)) };
+        return { type: "image", src: url(file), alt, ...(await inspectImage(path.join(dir, file), side)) };
       }
       if (VIDEO_EXT.includes(ext)) {
         const stem = path.parse(file).name;
